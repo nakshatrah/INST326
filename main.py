@@ -35,3 +35,11 @@ class HeartDiseaseRiskCalculator(RiskCalculator):
 
     def assess(self, user_profile):
         pass
+
+# Class 5
+class RiskAssesmentSystem:
+    def __init__(self, user_profile,dataset):
+        pass
+
+    def full_assesment(self):
+        pass
