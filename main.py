@@ -1,3 +1,4 @@
+#class 1
 class UserProfile():
     def __init__(self, age, ethnicity, family_history, genetic_marker):
         pass
@@ -9,7 +10,7 @@ class UserProfile():
         pass
 
 
-
+#Class 2
 class RiskCalculator():
     def __init__(self, dataset):
         pass
