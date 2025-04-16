@@ -26,3 +26,12 @@ class DiabetesRiskCalculator(RiskCalculator):
 
     def assess(self, user_profile):
         pass
+
+#Class 4
+class HeartDiseaseRiskCalculator(RiskCalculator):
+    def calculate_score(self, user_profile):
+        pass
+
+
+    def assess(self, user_profile):
+        pass
