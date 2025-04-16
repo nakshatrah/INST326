@@ -17,3 +17,12 @@ class RiskCalculator():
 
     def classify_risk(self, score):
         pass
+
+#Class 3
+class DiabetesRiskCalculator(RiskCalculator):
+    def calculate_score(self, user_profile):
+        pass
+
+
+    def assess(self, user_profile):
+        pass
