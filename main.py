@@ -10,7 +10,7 @@ class UserProfile():
         pass
 
 
-#Class 2
+#Class 2 test comment 
 class RiskCalculator():
     def __init__(self, dataset):
         pass
