@@ -41,35 +41,103 @@ class UserProfile():
 
 #Class 2 test comment 
 class RiskCalculator():
-    """"""
+    """ This class calculates the health risk based on a dataset.
+
+    Attributes: 
+        dataset(any type): The dataset that is entered; this is used to calculate the risk. 
+    """
     def __init__(self, dataset):
+        """ This function is the initialization function that's meant to set up a RiskCalculator.
+
+        Args:
+            dataset(any type): The dataset used in the risk calculation.
+        """
         pass
 
     def classify_risk(self, score):
+        """ This function classifies the risk based on a score. 
+        
+        Args:
+            score(int): The risk score that is calculated.
+
+        Returns:
+            str: A string that describes the risk level.
+        """
         pass
 
 #Class 3
 class DiabetesRiskCalculator(RiskCalculator):
+    """ This class calculates the risk of diabetes based on the user profile."""
     def calculate_score(self, user_profile):
+        """ This method calculates a risk score for diabetes.
+        
+        Args:
+            user_profile(UserProfile): The user's profile to be evaluated. 
+
+        Returns: 
+            int: The risk score for diabetes.
+        """
         pass
 
 
     def assess(self, user_profile):
+        """ This method assesses the risk for diabetes and returns a risk classification.
+        
+        Args:
+            user_profile(UserProfile): The user's profile to be evaluated.
+            
+        Returns:
+            str: The risk classification for diabetes.
+        """
         pass
 
 #Class 4
 class HeartDiseaseRiskCalculator(RiskCalculator):
+    """ This class calculates the risk of heart disease based on the user profile."""
     def calculate_score(self, user_profile):
+        """ This methods calculates a risk score for hear disease based on the user profile, similarly to our previous DiabetesRiskCalculator function.
+        
+        Args: 
+            user_profile(UserProfile): The user's profile to be evaluated. 
+
+        Returns:
+            int: The risk score for heart disease.
+        """
         pass
 
 
     def assess(self, user_profile):
+        """ This method assesses the risk for heart disease and returns a risk classification.
+        
+        Args: 
+            user_profile(UserProfile): The user's profile to be assessed.
+            
+        Returns:
+            str: The risk classification for heart disease."""
         pass
 
 # Class 5
-class RiskAssesmentSystem:
+class RiskAssessmentSystem:
+    """ This class is the main system for risk assessment; It coordinates the entire health risk assessment for the individual using our program.
+    
+    Attributes: 
+        user_profile(UserProfile): The user's profile being evaluated.
+        dataset(any type): The dataset used in the risk calculation.
+    """
+    
     def __init__(self, user_profile,dataset):
+        """This function is the initialization function that's meant to set up a RiskAssessmentSystem.
+        
+        Args:
+            user_profile(UserProfile): The user's profile being evaluated.
+            dataset(any type): The dataset used for the user's assessment for the user. This 
+        """
         pass
 
     def full_assesment(self):
+        """ This method performs a full risk assessment for diabetes and heart disease.
+        
+        Returns:
+            dict: A dictionary that contains the risk assessments for both diabetes and heart disease.
+        """
         pass
