@@ -44,7 +44,7 @@ class TestRiskAssessmentSystem(unittest.TestCase):
     """Purpose: These are the tests for the RiskAssessmentSystem class. The return should be "OK" if it runs properly. """
     def test_all(self):
         user = UserProfile(19, "Black", True, True)
-        system = RiskAssesmentSystem(user, "dataset")
+        system = RiskAssessmentSystem(user, "dataset")
         self.assertIsNone(system.full_assesment())
 
 if __name__ == '__main__':
