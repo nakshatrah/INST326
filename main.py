@@ -20,7 +20,7 @@ class UserProfile():
         self.ethnicity = ethnicity
         self.family_history = family_history
         self.genetic_marker = genetic_marker
-
+    
     def get_summary(self):
         """This function returns a summary of the user's profile.
         
