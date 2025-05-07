@@ -16,7 +16,10 @@ class UserProfile():
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
         """
-        pass
+        self.age = age
+        self.ethnicity = ethnicity
+        self.family_history = family_history
+        self.genetic_marker = genetic_marker
 
     def get_summary(self):
         """This function returns a summary of the user's profile.
