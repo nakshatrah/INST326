@@ -35,7 +35,7 @@ class UserProfile():
                 f"Age: {self.age}\n"
                 f"Ethnicity: {self.ethnicity}\n"
                 f"Family History: {'Yes' if self.family_history else 'No'}\n"
-                f"Genetic Marker: {'Yes' if self.genetic_marker else 'No'}\n")
+                f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n")
 
     def has_risk_factors(self):
         """ This function will determine if the user has any risk factors based on their profile.
