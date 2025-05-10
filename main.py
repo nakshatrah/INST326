@@ -31,7 +31,11 @@ class UserProfile():
             str: A summary of the user's profile in a string.
         
         """
-        pass
+        return (f"User Profile:\n"
+                f"Age: {self.age}\n"
+                f"Ethnicity: {self.ethnicity}\n"
+                f"Family History: {'Yes' if self.family_history else 'No'}\n"
+                f"Genetic Marker: {'Yes' if self.genetic_marker else 'No'}\n")
 
     def has_risk_factors(self):
         """ This function will determine if the user has any risk factors based on their profile.
@@ -39,7 +43,7 @@ class UserProfile():
         Returns:
             boolean: This is true if the risk factors are present. If not, it is false. 
         """
-        pass
+        return self.family_history or self.genetic_marker
 
 
 #Class 2 test comment 
