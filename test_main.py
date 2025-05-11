@@ -4,7 +4,7 @@ This module holds the test for UserProfile, DiabetesRiskCalculator, HeartDisease
 """
 
 import unittest
-from main import UserProfile, RiskCalculator, DiabetesRiskCalculator, HeartDiseaseRiskCalculator, RiskAssessmentSystem
+from finalproject.INST326.main import UserProfile, RiskCalculator, DiabetesRiskCalculator, HeartDiseaseRiskCalculator, RiskAssessmentSystem
 
 class TestUserProfile(unittest.TestCase):
     """Purpose: These are the tests for the UserProfile class. The return should be "OK" if it runs properly. """
