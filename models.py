@@ -188,8 +188,8 @@ class RiskAssessmentSystem:
         similar = df[
             (df["Age"].between(self.user_profile.age - 5, self.user_profile.age + 5)) & 
             (df["Ethnicity"].str.lower() == self.user_profile.ethnicity.lower()) &
-            (df["Family History"].str.lowe() == ("yes" if self.user_profile.family_history else "no")) &
-            (df["Genetic Marker"].str.lower() == ("positive" if self.user_profile.genetic_marker else "negative"))      
+            (df["Family History"].str.lower() == ("yes" if self.user_profile.family_history else "no")) &
+            (df["Genetic Markers"].str.lower() == ("positive" if self.user_profile.genetic_marker else "negative"))      
         ]
 
         return  similar[["Target", "Age", "Ethnicity", "Family History", "Genetic Markers"]].head(5)
