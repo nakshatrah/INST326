@@ -109,7 +109,8 @@ class DiabetesRiskCalculator(RiskCalculator):
         Returns:
             str: The risk classification for diabetes.
         """
-        pass
+        score = self.calculate_score(user_profile)
+        return self.classify_risk(score)
 
 #Class 4
 class HeartDiseaseRiskCalculator(RiskCalculator):
