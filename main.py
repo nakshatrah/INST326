@@ -124,7 +124,14 @@ class HeartDiseaseRiskCalculator(RiskCalculator):
         Returns:
             int: The risk score for heart disease.
         """
-        pass
+        score = 0
+        if user_profile.age > 50:
+            score += 2
+        if user_profile.family_history:
+            score += 2
+        if user_profile.genetic_marker:
+            score += 3
+        return score
 
 
     def assess(self, user_profile):
