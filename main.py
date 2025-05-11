@@ -59,7 +59,7 @@ class RiskCalculator():
         Args:
             dataset(any type): The dataset used in the risk calculation.
         """
-        pass
+        self.dataset = dataset
 
     def classify_risk(self, score):
         """ This function classifies the risk based on a score. 
@@ -70,7 +70,12 @@ class RiskCalculator():
         Returns:
             str: A string that describes the risk level.
         """
-        pass
+        if score >= 7:
+            return "High Risk"
+        elif score >= 4:
+            return "Moderate Risk"
+        else:
+            return "Low Risk"
 
 #Class 3
 class DiabetesRiskCalculator(RiskCalculator):
