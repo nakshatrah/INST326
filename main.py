@@ -1,3 +1,8 @@
+import unittest
+import pandas as pd
+from main import UserProfile, DiabetesRiskCalculator, HeartDiseaseRiskCalculator, RiskAssessmentSystem
+
+
 #class 1
 class UserProfile():
     """ This class represents a user's health profile, storing info such as age, ethnicity, familiy history, and genetic markers. 
@@ -153,7 +158,8 @@ class RiskAssessmentSystem:
             user_profile(UserProfile): The user's profile being evaluated.
             dataset(any type): The dataset used for the user's assessment for the user. This 
         """
-        pass
+        self.user_profile = user_profile
+        self.dataset = dataset
 
     def full_assesment(self):
         """ This method performs a full risk assessment for diabetes and heart disease.
@@ -161,4 +167,30 @@ class RiskAssessmentSystem:
         Returns:
             dict: A dictionary that contains the risk assessments for both diabetes and heart disease.
         """
-        pass
+        diabetes_calc = DiabetesRiskCalculator(self.dataset)
+        heart_calc = HeartDiseaseRiskCalculator(self.dataset)
+
+        diabetes_result = diabetes_calc.assess(self.user_profile)
+        heart_result = heart_calc.assess(self.user_profile)
+
+        return{
+            "Diabetes Risk": diabetes_result,
+            "Heart Disease Risk": heart_result
+        }
+    
+    def find_similar_cases(self):
+        """ This is a new method that we intend to add to our RiskAssessmentSystem class, it will find similar cases to that of the user based on the dataset."""
+        df = self.dataset 
+
+        similar = df[
+            (df["Age"].between(self.user_profile.age - 5, self.user_profile.age + 5)) & 
+            (df["Ethnicity"].str.lower() == self.user_profile.ethnicity.lower()) &
+            (df["Family History"].str.lowe() == ("yes" if self.user_profile.family_history else "no")) &
+            (df["Genetic Marker"].str.lower() == ("positive" if self.user_profile.genetic_marker else "negative"))      
+        ]
+
+        return  similar[["Target", "Age", "Ethnicity", "Family History", "Genetic Markers"]].head(5)
+    
+def load_data(file_path):
+    return pd.read_csv(file_path)
+                       
