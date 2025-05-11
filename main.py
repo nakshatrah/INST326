@@ -89,7 +89,15 @@ class DiabetesRiskCalculator(RiskCalculator):
         Returns: 
             int: The risk score for diabetes.
         """
-        pass
+        score = 0
+
+        if user_profile.age > 45:
+            score += 2
+        if user_profile.family_history:
+            score += 3
+        if user_profile.genetic_marker:
+            score += 3
+        return score
 
 
     def assess(self, user_profile):
