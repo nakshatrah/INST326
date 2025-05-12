@@ -36,4 +36,8 @@ if __name__ == "__main__":
     system = RiskAssessmentSystem(user, dataset)
     similar_cases = system.find_similar_cases(top_n=3)
     print("\nSimilar Cases From Dataset:")
-    print(similar_cases.to_string(index=False))
+
+    if not similar_cases.empty:
+        print(similar_cases.to_string(index=False))
+    else:
+        print("There were no other similar cases to your's in the dataset")
