@@ -51,7 +51,15 @@ if __name__ == "__main__":
 
 
 def classify_row(row):
-    ### ADDD DOCSTRINGS
+    """
+    Grabs the data from each row from the dataset
+
+    Args:
+        - row: grabs the row from the datset containing the specific attribute
+    
+    Returns:
+        - Risk assesment Results
+    """
     profile =UserProfile(
         age=row["Age"],
         physical_activity=row["Physical Activity"],
