@@ -112,38 +112,6 @@ class DiabetesRiskCalculator(RiskCalculator):
         score = self.calculate_score(user_profile)
         return self.classify_risk(score)
 
-#Class 4
-# class HeartDiseaseRiskCalculator(RiskCalculator):
-#     """ This class calculates the risk of heart disease based on the user profile."""
-#     def calculate_score(self, user_profile):
-#         """ This methods calculates a risk score for hear disease based on the user profile, similarly to our previous DiabetesRiskCalculator function.
-        
-#         Args: 
-#             user_profile(UserProfile): The user's profile to be evaluated. 
-
-#         Returns:
-#             int: The risk score for heart disease.
-#         """
-#         score = 0
-#         if user_profile.age > 50:
-#             score += 2
-#         if user_profile.family_history:
-#             score += 2
-#         if user_profile.genetic_marker:
-#             score += 3
-#         return score
-
-
-#     def assess(self, user_profile):
-#         """ This method assesses the risk for heart disease and returns a risk classification.
-        
-#         Args: 
-#             user_profile(UserProfile): The user's profile to be assessed.
-            
-#         Returns:
-#             str: The risk classification for heart disease."""
-#         score = self.calculate_score(user_profile)
-#         return self.classify_risk(score)
 
 # Class 5
 class RiskAssessmentSystem:
@@ -171,14 +139,13 @@ class RiskAssessmentSystem:
             dict: A dictionary that contains the risk assessments for both diabetes and heart disease.
         """
         diabetes_calc = DiabetesRiskCalculator(self.dataset)
-        #heart_calc = HeartDiseaseRiskCalculator(self.dataset)
+        
 
         diabetes_result = diabetes_calc.assess(self.user_profile)
-        #heart_result = heart_calc.assess(self.user_profile)
 
         return{
             "Diabetes Risk": diabetes_result,
-            #"Heart Disease Risk": heart_result
+
         }
     
     def find_similar_cases(self, top_n=5):

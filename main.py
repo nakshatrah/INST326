@@ -1,10 +1,11 @@
 import unittest
 import pandas as pd
 import matplotlib.pyplot as plt
-from models import UserProfile, DiabetesRiskCalculator, RiskAssessmentSystem #, HeartDiseaseRiskCalculator
+from models import UserProfile, DiabetesRiskCalculator, RiskAssessmentSystem 
 
     
 def load_data(file_path):
+    ##ADD DOCSTRINGs
     return pd.read_csv(file_path)
                        
 if __name__ == "__main__": 
@@ -23,15 +24,12 @@ if __name__ == "__main__":
     user = UserProfile(age=age, ethnicity=ethnicity, family_history=family_history, genetic_marker=genetic_marker)
 
     diabetes_calculator = DiabetesRiskCalculator(dataset)
-    #heart_disease_calculator = HeartDiseaseRiskCalculator(dataset)
     diabetes_risk = diabetes_calculator.assess(user)
-    #heart_disease_risk = heart_disease_calculator.assess(user)
 
 
     # User's results are outputted
     print("\nThanks for using our program! Here are your risk assessment results:")
     print(f"Diabetes Risk: {diabetes_risk}")
-    #print(f"Heart Disease Risk: {heart_disease_risk}")
 
     # Finds similar cases to the user
     system = RiskAssessmentSystem(user, dataset)
@@ -42,9 +40,10 @@ if __name__ == "__main__":
         print(similar_cases.to_string(index=False))
     else:
         print("There were no other similar cases to your's in the dataset")
-######
+
 
 def classify_row(row):
+    ### ADDD DOCSTRINGS
     profile =UserProfile(
         age=row["Age"],
         ethnicity=row["Ethnicity"],
