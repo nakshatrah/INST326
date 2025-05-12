@@ -1,11 +1,11 @@
 """ This file contains the unit tests for the risk assessment system classes. 
 
-This module holds the test for UserProfile, DiabetesRiskCalculator, HeartDiseaseRiskCalculator, and RiskAssessmentSystem. These tests helped us validate our structure to check that the methods are functional. 
+This module holds the test for UserProfile, DiabetesRiskCalculator, and RiskAssessmentSystem. These tests helped us validate our structure to check that the methods are functional. 
 """
 
 import unittest
 import pandas as pd
-from models import UserProfile, RiskCalculator, DiabetesRiskCalculator, HeartDiseaseRiskCalculator, RiskAssessmentSystem
+from models import UserProfile, RiskCalculator, DiabetesRiskCalculator, RiskAssessmentSystem
 
 sample_data = pd.DataFrame([
     {
