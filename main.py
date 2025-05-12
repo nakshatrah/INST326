@@ -11,17 +11,17 @@ def load_data(file_path):
 if __name__ == "__main__": 
     dataset = load_data("diabetes_dataset.csv")
 
-    user = UserProfile(age = 35, ethnicity = "Hispanic", family_history = True, genetic_marker = True)
+    user = UserProfile(age = 35, physical_activity = "Physical Activity", family_history = True, genetic_marker = True)
 
     age = int(input("Enter your age: "))
-    ethnicity = input("Enter your ethnicity (Low/High): ")
+    physical_activity = input("Enter your physical activiity (Low/Moderate/High): ")
     family_history_input = input("Do you have a family history of diabetes? (yes/no): ").strip().lower()
     genetic_marker_input = input("Do you have genetic markers for diabetes? (yes/no): ").strip().lower()
 
     family_history = family_history_input == "yes"
     genetic_marker = genetic_marker_input == "yes"
 
-    user = UserProfile(age=age, ethnicity=ethnicity, family_history=family_history, genetic_marker=genetic_marker)
+    user = UserProfile(age=age, physical_activity=physical_activity, family_history=family_history, genetic_marker=genetic_marker)
 
     diabetes_calculator = DiabetesRiskCalculator(dataset)
     diabetes_risk = diabetes_calculator.assess(user)
@@ -46,19 +46,21 @@ def classify_row(row):
     ### ADDD DOCSTRINGS
     profile =UserProfile(
         age=row["Age"],
-        ethnicity=row["Ethnicity"],
+        physical_activity=row["Physical Activity"],
         family_history=row["Family History"].strip().lower()== "yes",
         genetic_marker=row["Genetic Markers"].strip().lower()== "positive"
     )
     return diabetes_calculator.assess(profile)
 
-dataset["Diabetes Risk Level"]= dataset.apply(classify_row, axis=1)
-ethnicity_counts= dataset["Diabetes Risk Level"].value_counts()
-plt.figure(figsize=(8,5))
-ethnicity_counts.plot(kind="bar", color="skyblue", edgecolor="black")
+dataset["Physical Activity"]= dataset.apply(classify_row, axis=1)
 
-plt.title=("Diabetes Risk Distribution")
-plt.xlabel("Risk Level")
+
+activity_counts= dataset["Physical Activity"].value_counts()
+plt.figure(figsize=(8,5))
+activity_counts.plot(kind="bar", color="skyblue", edgecolor="black")
+
+plt.title=("Physical Activity Distribution")
+plt.xlabel("Physical Activity Level")
 plt.ylabel("Number of people")
 plt.xticks(rotation=0)
 plt.tight_layout()

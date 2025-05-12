@@ -4,20 +4,20 @@ class UserProfile():
     
     Attributes:
         age(int): The age of the user.
-        ethnicity(str): The ethnicity of the user. 
+        Physical Activity(str): The amount of exercise teh users does
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
     """
     
-    def __init__(self, age, ethnicity, family_history, genetic_marker):
+    def __init__(self, age, physical_activity, family_history, genetic_marker):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
-        ethnicity(str): The ethnicity of the user. 
+        Physical Activity(str): The amount of exercise teh users does
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
         """
         self.age = age
-        self.ethnicity = ethnicity
+        self.physical_activity = physical_activity
         self.family_history = family_history
         self.genetic_marker = genetic_marker
     
@@ -33,7 +33,7 @@ class UserProfile():
         """
         return (f"User Profile:\n"
                 f"Age: {self.age}\n"
-                f"Ethnicity: {self.ethnicity}\n"
+                f"Physical Activity: {self.physical_activity}\n"
                 f"Family History: {'Yes' if self.family_history else 'No'}\n"
                 f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n")
 
@@ -46,7 +46,7 @@ class UserProfile():
         return self.family_history or self.genetic_marker
 
 
-#Class 2 test comment 
+#Class 2 
 class RiskCalculator():
     """ This class calculates the health risk based on a dataset.
 
@@ -154,9 +154,9 @@ class RiskAssessmentSystem:
 
         similar = df[
             (df["Age"].between(self.user_profile.age - 5, self.user_profile.age + 5)) & 
-            (df["Ethnicity"].str.lower() == self.user_profile.ethnicity.lower()) &
+            (df["Physical Activity"].str.lower() == self.user_profile.physical_activity.lower()) &
             (df["Family History"].str.lower() == ("yes" if self.user_profile.family_history else "no")) &
             (df["Genetic Markers"].str.lower() == ("positive" if self.user_profile.genetic_marker else "negative"))      
         ]
 
-        return  similar[["Target", "Age", "Ethnicity", "Family History", "Genetic Markers"]].head(5)
+        return  similar[["Target", "Age", "Physical Activity", "Family History", "Genetic Markers"]].head(5)
