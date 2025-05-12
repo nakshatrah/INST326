@@ -13,7 +13,7 @@ if __name__ == "__main__":
     user = UserProfile(age = 35, ethnicity = "Hispanic", family_history = True, genetic_marker = True)
 
     age = int(input("Enter your age: "))
-    ethnicity = input("Enter your ethnicity: ")
+    ethnicity = input("Enter your ethnicity (Low/High): ")
     family_history_input = input("Do you have a family history of diabetes? (yes/no): ").strip().lower()
     genetic_marker_input = input("Do you have genetic markers for diabetes? (yes/no): ").strip().lower()
 
