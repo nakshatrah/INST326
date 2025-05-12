@@ -1,23 +1,23 @@
-#class 1
+
 class UserProfile():
     """ This class represents a user's health profile, storing info such as age, ethnicity, familiy history, and genetic markers. 
     
     Attributes:
         age(int): The age of the user.
-        ethnicity(str): The ethnicity of the user. 
+        Physical Activity(str): The amount of exercise teh users does
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
     """
     
-    def __init__(self, age, ethnicity, family_history, genetic_marker):
+    def __init__(self, age, physical_activity, family_history, genetic_marker):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
-        ethnicity(str): The ethnicity of the user. 
+        Physical Activity(str): The amount of exercise teh users does
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
         """
         self.age = age
-        self.ethnicity = ethnicity
+        self.physical_activity = physical_activity
         self.family_history = family_history
         self.genetic_marker = genetic_marker
     
@@ -33,7 +33,7 @@ class UserProfile():
         """
         return (f"User Profile:\n"
                 f"Age: {self.age}\n"
-                f"Ethnicity: {self.ethnicity}\n"
+                f"Physical Activity: {self.physical_activity}\n"
                 f"Family History: {'Yes' if self.family_history else 'No'}\n"
                 f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n")
 
@@ -46,7 +46,6 @@ class UserProfile():
         return self.family_history or self.genetic_marker
 
 
-#Class 2 test comment 
 class RiskCalculator():
     """ This class calculates the health risk based on a dataset.
 
@@ -77,7 +76,6 @@ class RiskCalculator():
         else:
             return "Low Risk"
 
-#Class 3
 class DiabetesRiskCalculator(RiskCalculator):
     """ This class calculates the risk of diabetes based on the user profile."""
     def calculate_score(self, user_profile):
@@ -112,40 +110,7 @@ class DiabetesRiskCalculator(RiskCalculator):
         score = self.calculate_score(user_profile)
         return self.classify_risk(score)
 
-#Class 4
-# class HeartDiseaseRiskCalculator(RiskCalculator):
-#     """ This class calculates the risk of heart disease based on the user profile."""
-#     def calculate_score(self, user_profile):
-#         """ This methods calculates a risk score for hear disease based on the user profile, similarly to our previous DiabetesRiskCalculator function.
-        
-#         Args: 
-#             user_profile(UserProfile): The user's profile to be evaluated. 
 
-#         Returns:
-#             int: The risk score for heart disease.
-#         """
-#         score = 0
-#         if user_profile.age > 50:
-#             score += 2
-#         if user_profile.family_history:
-#             score += 2
-#         if user_profile.genetic_marker:
-#             score += 3
-#         return score
-
-
-#     def assess(self, user_profile):
-#         """ This method assesses the risk for heart disease and returns a risk classification.
-        
-#         Args: 
-#             user_profile(UserProfile): The user's profile to be assessed.
-            
-#         Returns:
-#             str: The risk classification for heart disease."""
-#         score = self.calculate_score(user_profile)
-#         return self.classify_risk(score)
-
-# Class 5
 class RiskAssessmentSystem:
     """ This class is the main system for risk assessment; It coordinates the entire health risk assessment for the individual using our program.
     
@@ -171,14 +136,13 @@ class RiskAssessmentSystem:
             dict: A dictionary that contains the risk assessments for both diabetes and heart disease.
         """
         diabetes_calc = DiabetesRiskCalculator(self.dataset)
-        #heart_calc = HeartDiseaseRiskCalculator(self.dataset)
+        
 
         diabetes_result = diabetes_calc.assess(self.user_profile)
-        #heart_result = heart_calc.assess(self.user_profile)
 
         return{
             "Diabetes Risk": diabetes_result,
-            #"Heart Disease Risk": heart_result
+
         }
     
     def find_similar_cases(self, top_n=5):
@@ -187,9 +151,9 @@ class RiskAssessmentSystem:
 
         similar = df[
             (df["Age"].between(self.user_profile.age - 5, self.user_profile.age + 5)) & 
-            (df["Ethnicity"].str.lower() == self.user_profile.ethnicity.lower()) &
+            (df["Physical Activity"].str.lower() == self.user_profile.physical_activity.lower()) &
             (df["Family History"].str.lower() == ("yes" if self.user_profile.family_history else "no")) &
             (df["Genetic Markers"].str.lower() == ("positive" if self.user_profile.genetic_marker else "negative"))      
         ]
 
-        return  similar[["Target", "Age", "Ethnicity", "Family History", "Genetic Markers"]].head(5)
+        return  similar[["Target", "Age", "Physical Activity", "Family History", "Genetic Markers"]].head(5)
