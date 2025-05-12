@@ -181,7 +181,7 @@ class RiskAssessmentSystem:
             "Heart Disease Risk": heart_result
         }
     
-    def find_similar_cases(self):
+    def find_similar_cases(self, top_n=5):
         """ This is a new method that we intend to add to our RiskAssessmentSystem class, it will find similar cases to that of the user based on the dataset."""
         df = self.dataset 
 
