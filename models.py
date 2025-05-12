@@ -1,4 +1,4 @@
-#class 1
+
 class UserProfile():
     """ This class represents a user's health profile, storing info such as age, ethnicity, familiy history, and genetic markers. 
     
@@ -46,7 +46,6 @@ class UserProfile():
         return self.family_history or self.genetic_marker
 
 
-#Class 2 
 class RiskCalculator():
     """ This class calculates the health risk based on a dataset.
 
@@ -77,7 +76,6 @@ class RiskCalculator():
         else:
             return "Low Risk"
 
-#Class 3
 class DiabetesRiskCalculator(RiskCalculator):
     """ This class calculates the risk of diabetes based on the user profile."""
     def calculate_score(self, user_profile):
@@ -113,7 +111,6 @@ class DiabetesRiskCalculator(RiskCalculator):
         return self.classify_risk(score)
 
 
-# Class 5
 class RiskAssessmentSystem:
     """ This class is the main system for risk assessment; It coordinates the entire health risk assessment for the individual using our program.
     
