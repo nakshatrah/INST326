@@ -27,12 +27,12 @@ if __name__ == "__main__":
     heart_disease_risk = heart_disease_calculator.assess(user)
 
 
-    # Adding this print statement to test; need to see the results and check is the risk is calculated correctly
-    print("Thanks for using our program! Here are your risk assessment results:")
+    # User's results are outputted
+    print("\nThanks for using our program! Here are your risk assessment results:")
     print(f"Diabetes Risk: {diabetes_risk}")
     print(f"Heart Disease Risk: {heart_disease_risk}")
 
-    # Testing our new feature for finding similar cases below:
+    # Finds similar cases to the user
     system = RiskAssessmentSystem(user, dataset)
     similar_cases = system.find_similar_cases(top_n=3)
     print("\nSimilar Cases From Dataset:")
