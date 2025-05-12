@@ -52,14 +52,14 @@ def classify_row(row):
     )
     return diabetes_calculator.assess(profile)
 
-dataset["Physical Activity"]= dataset.apply(classify_row, axis=1)
+dataset["Diabetes Risk Level"]= dataset.apply(classify_row, axis=1)
 
 
-activity_counts= dataset["Physical Activity"].value_counts()
-plt.figure(figsize=(8,5))
-activity_counts.plot(kind="bar", color="skyblue", edgecolor="black")
+activity_risk_counts= dataset.groupby(["Physical Activity", "Diabetes Risk Level"]).size().unstack(fill_value=0)
 
-plt.title=("Physical Activity Distribution")
+activity_risk_counts.plot(kind="bar", stacked=True, color="blue", edgecolor="black", figsize=(8,5))
+
+plt.title=("Diabetes Risk by Physical Activity Level")
 plt.xlabel("Physical Activity Level")
 plt.ylabel("Number of people")
 plt.xticks(rotation=0)
