@@ -55,9 +55,18 @@ def classify_row(row):
 dataset["Diabetes Risk Level"]= dataset.apply(classify_row, axis=1)
 
 
-activity_risk_counts= dataset.groupby(["Physical Activity", "Diabetes Risk Level"]).size().unstack(fill_value=0)
+risk_counts= dataset["Diabetes Risk Level"].value_counts()
 
-activity_risk_counts.plot(kind="bar", stacked=True, color="blue", edgecolor="black", figsize=(8,5))
+
+
+risk_counts.plot(
+    kind="bar",
+    stacked="True",
+    color=["green","red","blue"],
+    edgecolor="black",
+    figsize=(8,5)
+)
+
 
 plt.title=("Diabetes Risk by Physical Activity Level")
 plt.xlabel("Physical Activity Level")
