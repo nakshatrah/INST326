@@ -5,7 +5,15 @@ from models import UserProfile, DiabetesRiskCalculator, RiskAssessmentSystem
 
     
 def load_data(file_path):
-    ##ADD DOCSTRINGs
+    """
+    Loads a CSV file containing the diabetes dataset into the Dataframe
+
+    Args:
+        - file_path: path to CSV file
+    
+    Returns: 
+        - The dataframe containing the loaded data
+    """
     return pd.read_csv(file_path)
                        
 if __name__ == "__main__": 
