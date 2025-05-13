@@ -39,6 +39,9 @@ if __name__ == "__main__":
     print("\nThanks for using our program! Here are your risk assessment results:")
     print(f"Diabetes Risk: {diabetes_risk}")
     print(f"BMI: {user.calculate_bmi()}")
+    print("\nPersonalized Recommendations:")
+    for rec in user.get_recommendtaions():
+        print(f"- {rec}")
 
     system = RiskAssessmentSystem(user, dataset)
     similar_cases = system.find_similar_cases(top_n=3)
