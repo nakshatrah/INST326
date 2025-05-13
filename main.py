@@ -70,6 +70,8 @@ def classify_row(row):
     """
     profile =UserProfile(
         age=row["Age"],
+        height=row["Height"],
+        weight=row["weight"],
         physical_activity=row["Physical Activity"],
         family_history=row["Family History"].strip().lower()== "yes",
         genetic_marker=row["Genetic Markers"].strip().lower()== "positive"

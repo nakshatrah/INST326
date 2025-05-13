@@ -23,6 +23,15 @@ class UserProfile():
         self.genetic_marker = genetic_marker
         self.height = height
         self.weight = weight 
+
+    def calculate_bmi(self):
+        
+        height_m = self.height * 0.3048
+        weight_kg = self.weight * 0.453592
+        if height_m == 0:
+            return 0
+        bmi = weight_kg / (height_m ** 2)
+        return round(bmi, 1)
     
     def get_summary(self):
         """This function returns a summary of the user's profile.
@@ -107,13 +116,7 @@ class RiskCalculator():
         else:
             return "Low Risk"
         
-    def calculate_bmi(self):
-        height_m = self.height * 0.3048
-        weight_kg = self.weight * 0.453592
-        if height_m == 0:
-            return 0
-        bmi = weight_kg / (height_m ** 2)
-        return round(bmi, 1)
+    
 
 
 class DiabetesRiskCalculator(RiskCalculator):
@@ -136,11 +139,12 @@ class DiabetesRiskCalculator(RiskCalculator):
         if user_profile.genetic_marker:
             score += 3
 
-        bmi = user_profile.bmi()
+        bmi = user_profile.calculate_bmi()
         if bmi >= 30:
             score += 2
         elif bmi >= 25:
             score += 1
+        return score
 
 
     def assess(self, user_profile):
