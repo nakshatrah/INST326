@@ -31,6 +31,9 @@ if __name__ == "__main__":
     family_history = family_history_input == "yes"
     genetic_marker = genetic_marker_input == "yes"
 
+    height_inches = height * 12
+    bmi = (weight / (height_inches ** 2)) * 703
+
     user = UserProfile(age=age, physical_activity=physical_activity, family_history=family_history, genetic_marker=genetic_marker, height=height, weight=weight)
 
     diabetes_calculator = DiabetesRiskCalculator(dataset)

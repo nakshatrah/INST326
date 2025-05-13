@@ -10,7 +10,7 @@ class UserProfile():
         weight (float): Weight of the user in pounds.
     """
     
-    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight, bmi):
+    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
         Physical Activity(str): The amount of exercise teh users does
@@ -23,7 +23,6 @@ class UserProfile():
         self.genetic_marker = genetic_marker
         self.height = height
         self.weight = weight 
-        self.bmi = bmi
     
     def get_summary(self):
         """This function returns a summary of the user's profile.
@@ -35,14 +34,14 @@ class UserProfile():
             str: A summary of the user's profile in a string.
         
         """
-        bmi = self.calculate_bmi()
         return (f"User Profile:\n"
                 f"Age: {self.age}\n"
                 f"Physical Activity: {self.physical_activity}\n"
                 f"Family History: {'Yes' if self.family_history else 'No'}\n"
                 f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n"
                 f"Height: {self.height} ft\n"
-                f"Weight: {self.weight} lbs\n")
+                f"Weight: {self.weight} lbs\n"
+                f"BMI: {self.bmi:.2f}\n")
 
     def has_risk_factors(self):
         """ This function will determine if the user has any risk factors based on their profile.
