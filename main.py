@@ -36,10 +36,12 @@ if __name__ == "__main__":
     diabetes_calculator = DiabetesRiskCalculator(dataset)
     diabetes_risk = diabetes_calculator.assess(user)
 
-    print("\nThanks for using our program! Here are your risk assessment results:")
+    print("\n--- Health Report ---")
+    print(f"Age: {user.age}")
+    print(f"Physical Activity: {user.physical_activity}")
     print(f"Diabetes Risk: {diabetes_risk}")
-    print(f"BMI: {user.calculate_bmi()}")
-    print("\nPersonalized Recommendations:")
+    print(f"BMI: {user.calculate_bmi():.2f}")
+    print("\nRecommendations:")
     for rec in user.get_recommendtaions():
         print(f"- {rec}")
 
