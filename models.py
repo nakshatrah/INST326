@@ -52,6 +52,31 @@ class UserProfile():
         return self.family_history or self.genetic_marker
 
 
+    def get_recommendtaions(self):
+        reccomendations = []
+
+        bmi = self.calculate_bmi()
+        if bmi >= 30:
+            reccomendations.append("Your BMI indicates obesity. Consider a weight management plan with a healthcare provider")
+        elif bmi >= 25:
+            reccomendations.append("You are overweight. Increasing physical activity and eating a balanced deit can help.")
+        elif bmi < 18.5:
+            reccomendations.append("Your BMI is low. You may benefit from a nutritionist's guidance.")
+
+        if self.physical_activity.lower() == "low":
+            reccomendations.append("Try to increase your physical activity. Even walking daily can help reduce your risk.")
+
+        if self.family_history:
+            reccomendations.append("Since you have a family history of diabetes, regular health checkups are recommended.")
+
+        if self.genetic_marker:
+            reccomendations.append("You have a genetic marker. Discuss genetic counseling or early screenings with your doctor.")
+
+        if not reccomendations:
+            reccomendations.append("Great job! Keep up your healthy lifestyle and regular checkups.")
+
+        return reccomendations
+
 class RiskCalculator():
     """ This class calculates the health risk based on a dataset.
 
