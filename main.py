@@ -19,7 +19,7 @@ def load_data(file_path):
 if __name__ == "__main__": 
     dataset = load_data("diabetes_dataset.csv")
 
-    user = UserProfile(age = 35, physical_activity = "Physical Activity", family_history = True, genetic_marker = True)
+    user = UserProfile(age = 35, physical_activity = "Physical Activity", family_history = True, genetic_marker = True, height =5.8, weight=150)
 
     age = int(input("Enter your age: "))
     physical_activity = input("Enter your physical activiity (Low/Moderate/High): ")
