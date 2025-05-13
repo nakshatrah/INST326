@@ -1,4 +1,3 @@
-
 class UserProfile():
     """ This class represents a user's health profile, storing info such as age, ethnicity, familiy history, and genetic markers. 
     
@@ -7,9 +6,11 @@ class UserProfile():
         Physical Activity(str): The amount of exercise teh users does
         family_history(boolean): This tells us whether or not there is a family history of diabetes or heart disease.
         genetic_marker(boolean): This tells us whether or not the user has a genetic marker for diabetes or heart disease.
+        height (float): Height of the user in feet.
+        weight (float): Weight of the user in pounds.
     """
     
-    def __init__(self, age, physical_activity, family_history, genetic_marker):
+    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
         Physical Activity(str): The amount of exercise teh users does
@@ -20,6 +21,8 @@ class UserProfile():
         self.physical_activity = physical_activity
         self.family_history = family_history
         self.genetic_marker = genetic_marker
+        self.height = height
+        self.weight = weight 
     
     def get_summary(self):
         """This function returns a summary of the user's profile.
@@ -31,11 +34,14 @@ class UserProfile():
             str: A summary of the user's profile in a string.
         
         """
+        bmi = self.calculate_bmi()
         return (f"User Profile:\n"
                 f"Age: {self.age}\n"
                 f"Physical Activity: {self.physical_activity}\n"
                 f"Family History: {'Yes' if self.family_history else 'No'}\n"
-                f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n")
+                f"Genetic Marker: {'Positive' if self.genetic_marker else 'Negative'}\n"
+                f"Height: {self.height} ft\n"
+                f"Weight: {self.weight} lbs\n")
 
     def has_risk_factors(self):
         """ This function will determine if the user has any risk factors based on their profile.
@@ -75,6 +81,15 @@ class RiskCalculator():
             return "Moderate Risk"
         else:
             return "Low Risk"
+        
+    def calculate_bmi(self):
+        height_m = self.height * 0.3048
+        weight_kg = self.weight * 0.453592
+        if height_m == 0:
+            return 0
+        bmi = weight_kg / (height_m ** 2)
+        return round(bmi, 1)
+
 
 class DiabetesRiskCalculator(RiskCalculator):
     """ This class calculates the risk of diabetes based on the user profile."""
@@ -95,7 +110,12 @@ class DiabetesRiskCalculator(RiskCalculator):
             score += 3
         if user_profile.genetic_marker:
             score += 3
-        return score
+
+        bmi = user_profile.calculate_bmi()
+        if bmi >= 30:
+            score += 2
+        elif bmi >= 25:
+            score += 1
 
 
     def assess(self, user_profile):

@@ -25,21 +25,21 @@ if __name__ == "__main__":
     physical_activity = input("Enter your physical activiity (Low/Moderate/High): ")
     family_history_input = input("Do you have a family history of diabetes? (yes/no): ").strip().lower()
     genetic_marker_input = input("Do you have genetic markers for diabetes? (yes/no): ").strip().lower()
+    height = float(input("Enter your height in feet (ex: 5.8): "))
+    weight = float(input("Enter your weight in pounds: "))
 
     family_history = family_history_input == "yes"
     genetic_marker = genetic_marker_input == "yes"
 
-    user = UserProfile(age=age, physical_activity=physical_activity, family_history=family_history, genetic_marker=genetic_marker)
+    user = UserProfile(age=age, physical_activity=physical_activity, family_history=family_history, genetic_marker=genetic_marker, height=height, weight=weight)
 
     diabetes_calculator = DiabetesRiskCalculator(dataset)
     diabetes_risk = diabetes_calculator.assess(user)
 
-
-    # User's results are outputted
     print("\nThanks for using our program! Here are your risk assessment results:")
     print(f"Diabetes Risk: {diabetes_risk}")
+    print(f"BMI: {user.calculate_bmi()}")
 
-    # Finds similar cases to the user
     system = RiskAssessmentSystem(user, dataset)
     similar_cases = system.find_similar_cases(top_n=3)
     print("\nSimilar Cases From Dataset:")
