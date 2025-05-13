@@ -137,7 +137,7 @@ class DiabetesRiskCalculator(RiskCalculator):
         if user_profile.genetic_marker:
             score += 3
 
-        bmi = user_profile.calculate_bmi()
+        bmi = user_profile.bmi()
         if bmi >= 30:
             score += 2
         elif bmi >= 25:
