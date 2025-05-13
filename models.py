@@ -10,7 +10,7 @@ class UserProfile():
         weight (float): Weight of the user in pounds.
     """
     
-    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight):
+    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight, bmi):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
         Physical Activity(str): The amount of exercise teh users does
@@ -23,6 +23,7 @@ class UserProfile():
         self.genetic_marker = genetic_marker
         self.height = height
         self.weight = weight 
+        self.bmi = bmi
     
     def get_summary(self):
         """This function returns a summary of the user's profile.
