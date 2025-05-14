@@ -17,6 +17,16 @@ def load_data(file_path):
     return pd.read_csv(file_path)
 
 def classify_row(row, diabetes_calculator):
+    """
+    Classifies the risk level for each row of user data
+
+    Args:
+        - row: a row from the dataset containing user information
+        - diabetes_calculator(DiabetesRiskCalculator): An instance of the calculator used to asses the risk
+
+    Returns:
+        - A string of the diabetes risk classification
+    """
     profile = UserProfile(
         age=row["Age"],
         height=5.5,
