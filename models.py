@@ -25,6 +25,12 @@ class UserProfile():
         self.weight = weight 
 
     def calculate_bmi(self):
+        """
+        Calculates BMI based on height and weight input by users
+
+        Returns:
+            -BMI: Float
+        """
         if self.height is None or self.weight is None:
             return None
         height_m = self.height * 0.3048
@@ -60,6 +66,12 @@ class UserProfile():
 
 
     def get_recommendations(self):
+        """
+        Gives recommendations based on answers the user provided in bmi, physical activity, family history, and genetic markers
+
+        Returns:
+            - a list of recommendations
+        """
         reccomendations = []
 
         bmi = self.calculate_bmi()
