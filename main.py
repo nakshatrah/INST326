@@ -15,11 +15,19 @@ def load_data(file_path):
         - The dataframe containing the loaded data
     """
     return pd.read_csv(file_path)
+
+def classify_row(row, diabetes_calculator):
+    profile = UserProfile(
+        age=row["Age"],
+        height=5.5,
+        weight=150,
+        physical_activity=row["Physical Activity"],
+        family_history=row["Family History"].strip().lower() == "yes",
+        genetic_marker=row["Genetic Markers"].strip().lower() == "positive",)
+    return diabetes_calculator.assess(profile)
                        
 if __name__ == "__main__": 
     dataset = load_data("diabetes_dataset.csv")
-
-    user = UserProfile(age = 35, physical_activity = "Physical Activity", family_history = True, genetic_marker = True, height =5.8, weight=150)
 
     age = int(input("Enter your age: "))
     physical_activity = input("Enter your physical activiity (Low/Moderate/High): ")
@@ -45,7 +53,7 @@ if __name__ == "__main__":
     print(f"Diabetes Risk: {diabetes_risk}")
     print(f"BMI: {user.calculate_bmi():.2f}")
     print("\nRecommendations:")
-    for rec in user.get_recommendtaions():
+    for rec in user.get_recommendations():
         print(f"- {rec}")
 
     system = RiskAssessmentSystem(user, dataset)
@@ -57,28 +65,7 @@ if __name__ == "__main__":
     else:
         print("There were no other similar cases to your's in the dataset")
 
-
-def classify_row(row):
-    """
-    Grabs the data from each row from the dataset
-
-    Args:
-        - row: grabs the row from the datset containing the specific attribute
-    
-    Returns:
-        - Risk assesment Results
-    """
-    profile =UserProfile(
-        age=row["Age"],
-        height=row["Height"],
-        weight=row["weight"],
-        physical_activity=row["Physical Activity"],
-        family_history=row["Family History"].strip().lower()== "yes",
-        genetic_marker=row["Genetic Markers"].strip().lower()== "positive"
-    )
-    return diabetes_calculator.assess(profile)
-
-dataset["Diabetes Risk Level"]= dataset.apply(classify_row, axis=1)
+dataset["Diabetes Risk Level"] = dataset.apply(lambda row: classify_row(row, diabetes_calculator), axis=1)
 
 
 risk_counts= dataset["Diabetes Risk Level"].value_counts()
