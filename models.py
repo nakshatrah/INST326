@@ -10,7 +10,7 @@ class UserProfile():
         weight (float): Weight of the user in pounds.
     """
     
-    def __init__(self, age, physical_activity, family_history, genetic_marker, height, weight):
+    def __init__(self, age, physical_activity, family_history, genetic_marker, height=None, weight=None):
         """This is the usual initialization function, which sets up a UserProfile object.
         age(int): The age of the user.
         Physical Activity(str): The amount of exercise teh users does
@@ -25,13 +25,11 @@ class UserProfile():
         self.weight = weight 
 
     def calculate_bmi(self):
-        
+        if self.height is None or self.weight is None:
+            return None
         height_m = self.height * 0.3048
         weight_kg = self.weight * 0.453592
-        if height_m == 0:
-            return 0
-        bmi = weight_kg / (height_m ** 2)
-        return round(bmi, 1)
+        return weight_kg / (height_m ** 2)
     
     def get_summary(self):
         """This function returns a summary of the user's profile.
@@ -61,7 +59,7 @@ class UserProfile():
         return self.family_history or self.genetic_marker
 
 
-    def get_recommendtaions(self):
+    def get_recommendations(self):
         reccomendations = []
 
         bmi = self.calculate_bmi()
